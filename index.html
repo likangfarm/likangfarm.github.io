@@ -110,7 +110,28 @@
     font-size: 0.9em;
     margin-top: 60px;
   }
+
+      /* 照片點擊放大 */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+}
 </style>
+  
 
 </head>
 
@@ -133,12 +154,12 @@
 <section>
   <h2>果園照片</h2>
   <div class="gallery">
-    <img src="photo1.jpg" alt="果園照片">
-    <img src="photo2.jpg" alt="果園照片">
-    <img src="photo3.jpg" alt="火龍果花">
-    <img src="photo4.jpg" alt="火龍果花">
-    <img src="photo5.jpg" alt="火龍果">
-    <img src="photo6.jpg" alt="證書">
+    <img src="photo1.jpg" onclick="openLightbox(this.src)">
+    <img src="photo2.jpg" onclick="openLightbox(this.src)">
+    <img src="photo3.jpg" onclick="openLightbox(this.src)">
+    <img src="photo4.jpg" onclick="openLightbox(this.src)">
+    <img src="photo5.jpg" onclick="openLightbox(this.src)">
+    <img src="photo6.jpg" onclick="openLightbox(this.src)">
   </div>
 
   <div class="video">
@@ -164,9 +185,25 @@
 <footer>
   © 2026 立綱農場｜火龍果園
 </footer>
+<!-- 照片放大視窗 -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img">
+</div>
+
+<script>
+  function openLightbox(src) {
+    document.getElementById("lightbox-img").src = src;
+    document.getElementById("lightbox").style.display = "flex";
+  }
+
+  function closeLightbox() {
+    document.getElementById("lightbox").style.display = "none";
+  }
+</script>
 
 </body>
 </html>
+
 
 
 
