@@ -4,142 +4,170 @@
   <meta charset="UTF-8">
   <title>立綱農場｜火龍果園</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
-  body {
-    margin: 0;
-    font-family: "Noto Sans TC", "微軟正黑體", sans-serif;
-    line-height: 1.8;
-    color: #3e3e3e;
-    background-color: #fdfdfb;
-  }
+    body {
+      margin: 0;
+      font-family: "Noto Sans TC", "微軟正黑體", sans-serif;
+      line-height: 1.8;
+      color: #3e3e3e;
+      background-color: #fdfdfb;
+    }
 
-  header {
-    background: linear-gradient(
-        rgba(0, 0, 0, 0.35),
-        rgba(0, 0, 0, 0.35)
-      ),
-      url("https://images.unsplash.com/photo-1625246333195-78d9c38ad449");
-    background-size: cover;
-    background-position: center;
-    color: white;
-    text-align: center;
-    padding: 130px 20px;
-  }
+    header {
+      background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
+        url("https://images.unsplash.com/photo-1625246333195-78d9c38ad449");
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-align: center;
+      padding: 130px 20px;
+    }
 
-  header h1 {
-    font-size: 3.2em;
-    letter-spacing: 4px;
-    margin-bottom: 10px;
-  }
+    header h1 {
+      font-size: 3.2em;
+      letter-spacing: 4px;
+      margin-bottom: 10px;
+    }
 
-  header p {
-    font-size: 1.2em;
-    letter-spacing: 2px;
-  }
+    header p {
+      font-size: 1.2em;
+      letter-spacing: 2px;
+    }
 
-  section {
-    padding: 70px 20px;
-    max-width: 1100px;
-    margin: auto;
-  }
+    section {
+      padding: 70px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
 
-  h2 {
-    text-align: center;
-    margin-bottom: 40px;
-    color: #4a7c59;
-    font-size: 2em;
-  }
+    h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      color: #4a7c59;
+      font-size: 2em;
+    }
 
-  .about {
-    text-align: center;
-    font-size: 1.1em;
-    max-width: 700px;
-    margin: auto;
-  }
+    .about {
+      text-align: center;
+      font-size: 1.1em;
+      max-width: 700px;
+      margin: auto;
+    }
 
-  .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-  }
+    /* 直式影片置中 */
+    .vertical-video {
+      max-width: 360px;
+      margin: 0 auto 30px auto;
+      display: flex;
+      justify-content: center;
+    }
 
-  .gallery img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    border-radius: 14px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-  }
+    .vertical-video iframe {
+      width: 100%;
+      height: 640px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      border: none;
+    }
 
-  .video {
-    text-align: center;
-    margin-top: 60px;
-  }
+    .video-desc {
+      text-align: center;
+      color: #666;
+      font-size: 0.95em;
+      margin-top: -10px;
+      margin-bottom: 40px;
+    }
 
-  iframe {
-    width: 100%;
-    max-width: 720px;
-    height: 400px;
-    border-radius: 16px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    border: none;
-  }
+    /* 照片區 */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
 
-  .contact {
-    background: #f1f6f2;
-    text-align: center;
-    border-radius: 20px;
-    padding: 60px 20px;
-  }
+    .gallery img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 14px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
 
-  .contact p {
-    font-size: 1.1em;
-  }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
 
-  a {
-    color: #4a7c59;
-    text-decoration: none;
-    font-weight: bold;
-  }
+    /* 聯絡 */
+    .contact {
+      background: #f1f6f2;
+      text-align: center;
+      border-radius: 20px;
+      padding: 60px 20px;
+    }
 
-  footer {
-    background: #4a7c59;
-    color: white;
-    text-align: center;
-    padding: 25px;
-    font-size: 0.9em;
-    margin-top: 60px;
-  }
+    .contact p {
+      font-size: 1.1em;
+    }
 
-      /* 照片點擊放大 */
-.lightbox {
-  display: none;
-  position: fixed;
-  z-index: 999;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.8);
-  justify-content: center;
-  align-items: center;
-}
+    a {
+      color: #4a7c59;
+      text-decoration: none;
+      font-weight: bold;
+    }
 
-.lightbox img {
-  max-width: 90%;
-  max-height: 90%;
-  border-radius: 12px;
-}
-</style>
-  
+    footer {
+      background: #4a7c59;
+      color: white;
+      text-align: center;
+      padding: 25px;
+      font-size: 0.9em;
+      margin-top: 60px;
+    }
 
+    /* 照片點擊放大 */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 12px;
+    }
+
+    /* 右下角 LINE 浮動按鈕 */
+    .line-float {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      background: #06C755;
+      color: white;
+      padding: 14px 20px;
+      border-radius: 40px;
+      font-size: 1em;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      z-index: 1000;
+    }
+  </style>
 </head>
 
 <body>
 
 <header>
   <h1>立綱農場</h1>
-  <p>有機栽培．喝豆漿長大的火龍果</p>
+  <p>高雄路竹｜有機栽培火龍果農場</p>
 </header>
 
 <section>
@@ -155,15 +183,17 @@
   <h2>果園影片</h2>
 
   <div class="vertical-video">
-    <iframe src="https://www.youtube.com/embed/2tyzE3WHGks" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/Nt-tNgVF6qo" allowfullscreen></iframe>
   </div>
+  <div class="video-desc">喝豆漿長大的火龍果>喝豆ㄐㄧ>
 
-  <div class="vertical-video" style="margin-top:20px;">
-    <iframe src="https://www.youtube.com/embed/FZEJ4QO_h7U" allowfullscreen></iframe>
+  <div class="vertical-video">
+    <iframe src="https://www.youtube.com/embed/3Jhl6uZNA3A" allowfullscreen></iframe>
   </div>
+  <div class="video-desc">果園環境紀錄</div>
 </section>
 
-  
+<section>
   <h2>果園照片</h2>
   <div class="gallery">
     <img src="photo1.jpg" onclick="openLightbox(this.src)">
@@ -183,7 +213,9 @@
 <footer>
   © 2026 立綱農場｜火龍果園
 </footer>
-<!-- 照片放大視窗 -->
+
+
+<!-- 照片放大 -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
   <img id="lightbox-img">
 </div>
@@ -201,9 +233,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
